@@ -4,9 +4,9 @@ import axios from 'axios';
 // Define the async thunk function
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
+  async (params, thunkAPI) => {
     try {
-      const response = await axios.get('https://fakestoreapi.com/products');
+      const response = await axios.get(`https://fakestoreapi.com/products/category/${params.jewelery}`);
       return response.data.map(product => ({
         id: product.id,
         title: product.title,

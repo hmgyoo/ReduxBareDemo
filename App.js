@@ -3,13 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from './src/features/fakestore/fakeStore';
 import React, { useEffect } from 'react';
 
+// object for categories
+const categoriesObject = {
+  electronics: "electronics",
+  jewelery: "jewelery",
+  mensClothing: "men's clothing",
+  womensClothing: "women's clothing"
+};
+
 const App = () => {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.fakeStore.loading);
   const products = useSelector(state => state.fakeStore.entities);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(categoriesObject));
   }, [dispatch]);
 
   return (
